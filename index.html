@@ -39,18 +39,17 @@
         <script src="js/leaflet-search.js"></script>
         <script src="data/OPZBoundaries_6.js"></script>
         <script src="data/DistrictBoundary_7.js"></script>
-        <script src="data/FLRMRFZoneBoundary_8.js"></script>
-        <script src="data/AccessibilityRoadNetwork_9.js"></script>
-        <script src="data/CatchmentZoneAreaBanadir_10.js"></script>
-        <script src="data/IDPSiteDemarcationDraft_11.js"></script>
-        <script src="data/IDPSite_12.js"></script>
-        <script src="data/NutritionPoint_13.js"></script>
-        <script src="data/HealthFacilities_14.js"></script>
-        <script src="data/InformationCenter_15.js"></script>
+        <script src="data/AccessibilityRoadNetwork_8.js"></script>
+        <script src="data/CatchmentZoneAreaBanadir_9.js"></script>
+        <script src="data/IDPSiteDemarcationDraft_10.js"></script>
+        <script src="data/IDPSite_11.js"></script>
+        <script src="data/NutritionPoint_12.js"></script>
+        <script src="data/HealthFacilities_13.js"></script>
+        <script src="data/InformationCenter_14.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[2.0530117049839127,45.23959487085885],[2.0910682853200955,45.29587159004325]]);
+        }).fitBounds([[2.0495411481859183,45.23874448330721],[2.091404194574312,45.30135048060877]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -102,6 +101,7 @@
             maxZoom: 28,
         });
         layer_EsriTopographic_2;
+        map.addLayer(layer_EsriTopographic_2);
         map.createPane('pane_GoogleHybrid_3');
         map.getPane('pane_GoogleHybrid_3').style.zIndex = 403;
         var layer_GoogleHybrid_3 = L.tileLayer('http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}', {
@@ -114,23 +114,10 @@
             maxNativeZoom: 30
         });
         layer_GoogleHybrid_3;
-        map.createPane('pane_GoogleSatellite_4');
-        map.getPane('pane_GoogleSatellite_4').style.zIndex = 404;
-        var layer_GoogleSatellite_4 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleSatellite_4',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 1,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 22
-        });
-        layer_GoogleSatellite_4;
-        map.addLayer(layer_GoogleSatellite_4);
-        map.createPane('pane_GoogleTerrain_5');
-        map.getPane('pane_GoogleTerrain_5').style.zIndex = 405;
-        var layer_GoogleTerrain_5 = L.tileLayer('http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleTerrain_5',
+        map.createPane('pane_GoogleTerrain_4');
+        map.getPane('pane_GoogleTerrain_4').style.zIndex = 404;
+        var layer_GoogleTerrain_4 = L.tileLayer('http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleTerrain_4',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
@@ -138,8 +125,20 @@
             minNativeZoom: 0,
             maxNativeZoom: 30
         });
-        layer_GoogleTerrain_5;
-        map.addLayer(layer_GoogleTerrain_5);
+        layer_GoogleTerrain_4;
+        map.createPane('pane_GoogleSatellite_5');
+        map.getPane('pane_GoogleSatellite_5').style.zIndex = 405;
+        var layer_GoogleSatellite_5 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_5',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 22
+        });
+        layer_GoogleSatellite_5;
+        map.addLayer(layer_GoogleSatellite_5);
         function pop_OPZBoundaries_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -265,6 +264,9 @@
                     <tr>\
                         <td colspan="2">' + (feature.properties['SHAPE_Area'] !== null ? autolinker.link(feature.properties['SHAPE_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Somaliland'] !== null ? autolinker.link(feature.properties['Somaliland'].toLocaleString()) : '') + '</td>\
+                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
@@ -296,72 +298,7 @@
         });
         bounds_group.addLayer(layer_DistrictBoundary_7);
         map.addLayer(layer_DistrictBoundary_7);
-        function pop_FLRMRFZoneBoundary_8(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['zone'] !== null ? autolinker.link(feature.properties['zone'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Region'] !== null ? autolinker.link(feature.properties['Region'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['index'] !== null ? autolinker.link(feature.properties['index'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['zone_name'] !== null ? autolinker.link(feature.properties['zone_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_FLRMRFZoneBoundary_8_0() {
-            return {
-                pane: 'pane_FLRMRFZoneBoundary_8',
-                opacity: 1,
-                color: 'rgba(6,104,101,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 8.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,1,247,0.0)',
-                interactive: true,
-            }
-        }
-        function style_FLRMRFZoneBoundary_8_1() {
-            return {
-                pane: 'pane_FLRMRFZoneBoundary_8',
-                opacity: 1,
-                color: 'rgba(255,255,255,1.0)',
-                dashArray: '1,5',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,0,255,0.0)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_FLRMRFZoneBoundary_8');
-        map.getPane('pane_FLRMRFZoneBoundary_8').style.zIndex = 408;
-        map.getPane('pane_FLRMRFZoneBoundary_8').style['mix-blend-mode'] = 'normal';
-        var layer_FLRMRFZoneBoundary_8 = new L.geoJson.multiStyle(json_FLRMRFZoneBoundary_8, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_FLRMRFZoneBoundary_8',
-            layerName: 'layer_FLRMRFZoneBoundary_8',
-            pane: 'pane_FLRMRFZoneBoundary_8',
-            onEachFeature: pop_FLRMRFZoneBoundary_8,
-            styles: [style_FLRMRFZoneBoundary_8_0,style_FLRMRFZoneBoundary_8_1,]
-        });
-        bounds_group.addLayer(layer_FLRMRFZoneBoundary_8);
-        map.addLayer(layer_FLRMRFZoneBoundary_8);
-        function pop_AccessibilityRoadNetwork_9(feature, layer) {
+        function pop_AccessibilityRoadNetwork_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -400,11 +337,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_AccessibilityRoadNetwork_9_0(feature) {
+        function style_AccessibilityRoadNetwork_8_0(feature) {
             switch(String(feature.properties['Category'])) {
                 case 'Primary Road':
                     return {
-                pane: 'pane_AccessibilityRoadNetwork_9',
+                pane: 'pane_AccessibilityRoadNetwork_8',
                 opacity: 1,
                 color: 'rgba(138,0,23,1.0)',
                 dashArray: '',
@@ -417,7 +354,7 @@
                     break;
                 case 'Secondary Road':
                     return {
-                pane: 'pane_AccessibilityRoadNetwork_9',
+                pane: 'pane_AccessibilityRoadNetwork_8',
                 opacity: 1,
                 color: 'rgba(232,19,0,1.0)',
                 dashArray: '',
@@ -430,7 +367,7 @@
                     break;
                 case 'Tertiary Road':
                     return {
-                pane: 'pane_AccessibilityRoadNetwork_9',
+                pane: 'pane_AccessibilityRoadNetwork_8',
                 opacity: 1,
                 color: 'rgba(255,117,128,1.0)',
                 dashArray: '',
@@ -443,7 +380,7 @@
                     break;
                 case 'Internal Road':
                     return {
-                pane: 'pane_AccessibilityRoadNetwork_9',
+                pane: 'pane_AccessibilityRoadNetwork_8',
                 opacity: 1,
                 color: 'rgba(255,167,236,1.0)',
                 dashArray: '',
@@ -456,21 +393,21 @@
                     break;
             }
         }
-        map.createPane('pane_AccessibilityRoadNetwork_9');
-        map.getPane('pane_AccessibilityRoadNetwork_9').style.zIndex = 409;
-        map.getPane('pane_AccessibilityRoadNetwork_9').style['mix-blend-mode'] = 'normal';
-        var layer_AccessibilityRoadNetwork_9 = new L.geoJson(json_AccessibilityRoadNetwork_9, {
+        map.createPane('pane_AccessibilityRoadNetwork_8');
+        map.getPane('pane_AccessibilityRoadNetwork_8').style.zIndex = 408;
+        map.getPane('pane_AccessibilityRoadNetwork_8').style['mix-blend-mode'] = 'normal';
+        var layer_AccessibilityRoadNetwork_8 = new L.geoJson(json_AccessibilityRoadNetwork_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_AccessibilityRoadNetwork_9',
-            layerName: 'layer_AccessibilityRoadNetwork_9',
-            pane: 'pane_AccessibilityRoadNetwork_9',
-            onEachFeature: pop_AccessibilityRoadNetwork_9,
-            style: style_AccessibilityRoadNetwork_9_0,
+            dataVar: 'json_AccessibilityRoadNetwork_8',
+            layerName: 'layer_AccessibilityRoadNetwork_8',
+            pane: 'pane_AccessibilityRoadNetwork_8',
+            onEachFeature: pop_AccessibilityRoadNetwork_8,
+            style: style_AccessibilityRoadNetwork_8_0,
         });
-        bounds_group.addLayer(layer_AccessibilityRoadNetwork_9);
-        map.addLayer(layer_AccessibilityRoadNetwork_9);
-        function pop_CatchmentZoneAreaBanadir_10(feature, layer) {
+        bounds_group.addLayer(layer_AccessibilityRoadNetwork_8);
+        map.addLayer(layer_AccessibilityRoadNetwork_8);
+        function pop_CatchmentZoneAreaBanadir_9(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Zone_Catch'] !== null ? autolinker.link(feature.properties['Zone_Catch'].toLocaleString()) : '') + '</td>\
@@ -479,9 +416,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_CatchmentZoneAreaBanadir_10_0() {
+        function style_CatchmentZoneAreaBanadir_9_0() {
             return {
-                pane: 'pane_CatchmentZoneAreaBanadir_10',
+                pane: 'pane_CatchmentZoneAreaBanadir_9',
                 opacity: 1,
                 color: 'rgba(1,65,255,1.0)',
                 dashArray: '',
@@ -494,9 +431,9 @@
                 interactive: true,
             }
         }
-        function style_CatchmentZoneAreaBanadir_10_1() {
+        function style_CatchmentZoneAreaBanadir_9_1() {
             return {
-                pane: 'pane_CatchmentZoneAreaBanadir_10',
+                pane: 'pane_CatchmentZoneAreaBanadir_9',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '1,5',
@@ -509,21 +446,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_CatchmentZoneAreaBanadir_10');
-        map.getPane('pane_CatchmentZoneAreaBanadir_10').style.zIndex = 410;
-        map.getPane('pane_CatchmentZoneAreaBanadir_10').style['mix-blend-mode'] = 'normal';
-        var layer_CatchmentZoneAreaBanadir_10 = new L.geoJson.multiStyle(json_CatchmentZoneAreaBanadir_10, {
+        map.createPane('pane_CatchmentZoneAreaBanadir_9');
+        map.getPane('pane_CatchmentZoneAreaBanadir_9').style.zIndex = 409;
+        map.getPane('pane_CatchmentZoneAreaBanadir_9').style['mix-blend-mode'] = 'normal';
+        var layer_CatchmentZoneAreaBanadir_9 = new L.geoJson.multiStyle(json_CatchmentZoneAreaBanadir_9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_CatchmentZoneAreaBanadir_10',
-            layerName: 'layer_CatchmentZoneAreaBanadir_10',
-            pane: 'pane_CatchmentZoneAreaBanadir_10',
-            onEachFeature: pop_CatchmentZoneAreaBanadir_10,
-            styles: [style_CatchmentZoneAreaBanadir_10_0,style_CatchmentZoneAreaBanadir_10_1,]
+            dataVar: 'json_CatchmentZoneAreaBanadir_9',
+            layerName: 'layer_CatchmentZoneAreaBanadir_9',
+            pane: 'pane_CatchmentZoneAreaBanadir_9',
+            onEachFeature: pop_CatchmentZoneAreaBanadir_9,
+            styles: [style_CatchmentZoneAreaBanadir_9_0,style_CatchmentZoneAreaBanadir_9_1,]
         });
-        bounds_group.addLayer(layer_CatchmentZoneAreaBanadir_10);
-        map.addLayer(layer_CatchmentZoneAreaBanadir_10);
-        function pop_IDPSiteDemarcationDraft_11(feature, layer) {
+        bounds_group.addLayer(layer_CatchmentZoneAreaBanadir_9);
+        map.addLayer(layer_CatchmentZoneAreaBanadir_9);
+        function pop_IDPSiteDemarcationDraft_10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['FID'] !== null ? autolinker.link(feature.properties['FID'].toLocaleString()) : '') + '</td>\
@@ -532,9 +469,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_IDPSiteDemarcationDraft_11_0() {
+        function style_IDPSiteDemarcationDraft_10_0() {
             return {
-                pane: 'pane_IDPSiteDemarcationDraft_11',
+                pane: 'pane_IDPSiteDemarcationDraft_10',
                 opacity: 1,
                 color: 'rgba(247,255,1,1.0)',
                 dashArray: '',
@@ -547,20 +484,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_IDPSiteDemarcationDraft_11');
-        map.getPane('pane_IDPSiteDemarcationDraft_11').style.zIndex = 411;
-        map.getPane('pane_IDPSiteDemarcationDraft_11').style['mix-blend-mode'] = 'normal';
-        var layer_IDPSiteDemarcationDraft_11 = new L.geoJson(json_IDPSiteDemarcationDraft_11, {
+        map.createPane('pane_IDPSiteDemarcationDraft_10');
+        map.getPane('pane_IDPSiteDemarcationDraft_10').style.zIndex = 410;
+        map.getPane('pane_IDPSiteDemarcationDraft_10').style['mix-blend-mode'] = 'normal';
+        var layer_IDPSiteDemarcationDraft_10 = new L.geoJson(json_IDPSiteDemarcationDraft_10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_IDPSiteDemarcationDraft_11',
-            layerName: 'layer_IDPSiteDemarcationDraft_11',
-            pane: 'pane_IDPSiteDemarcationDraft_11',
-            onEachFeature: pop_IDPSiteDemarcationDraft_11,
-            style: style_IDPSiteDemarcationDraft_11_0,
+            dataVar: 'json_IDPSiteDemarcationDraft_10',
+            layerName: 'layer_IDPSiteDemarcationDraft_10',
+            pane: 'pane_IDPSiteDemarcationDraft_10',
+            onEachFeature: pop_IDPSiteDemarcationDraft_10,
+            style: style_IDPSiteDemarcationDraft_10_0,
         });
-        bounds_group.addLayer(layer_IDPSiteDemarcationDraft_11);
-        function pop_IDPSite_12(feature, layer) {
+        bounds_group.addLayer(layer_IDPSiteDemarcationDraft_10);
+        function pop_IDPSite_11(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Zone_Catch'] !== null ? autolinker.link(feature.properties['Zone_Catch'].toLocaleString()) : '') + '</td>\
@@ -587,8 +524,7 @@
                         <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(feature.properties['Longitude'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">HH</th>\
-                        <td>' + (feature.properties['HH'] !== null ? autolinker.link(feature.properties['HH'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['HH'] !== null ? autolinker.link(feature.properties['HH'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Ind'] !== null ? autolinker.link(feature.properties['Ind'].toLocaleString()) : '') + '</td>\
@@ -603,9 +539,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_IDPSite_12_0() {
+        function style_IDPSite_11_0() {
             return {
-                pane: 'pane_IDPSite_12',
+                pane: 'pane_IDPSite_11',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(228,0,198,1.0)',
@@ -619,27 +555,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_IDPSite_12');
-        map.getPane('pane_IDPSite_12').style.zIndex = 412;
-        map.getPane('pane_IDPSite_12').style['mix-blend-mode'] = 'normal';
-        var layer_IDPSite_12 = new L.geoJson(json_IDPSite_12, {
+        map.createPane('pane_IDPSite_11');
+        map.getPane('pane_IDPSite_11').style.zIndex = 411;
+        map.getPane('pane_IDPSite_11').style['mix-blend-mode'] = 'normal';
+        var layer_IDPSite_11 = new L.geoJson(json_IDPSite_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_IDPSite_12',
-            layerName: 'layer_IDPSite_12',
-            pane: 'pane_IDPSite_12',
-            onEachFeature: pop_IDPSite_12,
+            dataVar: 'json_IDPSite_11',
+            layerName: 'layer_IDPSite_11',
+            pane: 'pane_IDPSite_11',
+            onEachFeature: pop_IDPSite_11,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_IDPSite_12_0(feature));
+                return L.circleMarker(latlng, style_IDPSite_11_0(feature));
             },
         });
-        bounds_group.addLayer(layer_IDPSite_12);
-        map.addLayer(layer_IDPSite_12);
-        function pop_NutritionPoint_13(feature, layer) {
+        bounds_group.addLayer(layer_IDPSite_11);
+        map.addLayer(layer_IDPSite_11);
+        function pop_NutritionPoint_12(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Organisati'] !== null ? autolinker.link(feature.properties['Organisati'].toLocaleString()) : '') + '</td>\
@@ -735,9 +671,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_NutritionPoint_13_0() {
+        function style_NutritionPoint_12_0() {
             return {
-                pane: 'pane_NutritionPoint_13',
+                pane: 'pane_NutritionPoint_12',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -747,26 +683,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_NutritionPoint_13');
-        map.getPane('pane_NutritionPoint_13').style.zIndex = 413;
-        map.getPane('pane_NutritionPoint_13').style['mix-blend-mode'] = 'normal';
-        var layer_NutritionPoint_13 = new L.geoJson(json_NutritionPoint_13, {
+        map.createPane('pane_NutritionPoint_12');
+        map.getPane('pane_NutritionPoint_12').style.zIndex = 412;
+        map.getPane('pane_NutritionPoint_12').style['mix-blend-mode'] = 'normal';
+        var layer_NutritionPoint_12 = new L.geoJson(json_NutritionPoint_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_NutritionPoint_13',
-            layerName: 'layer_NutritionPoint_13',
-            pane: 'pane_NutritionPoint_13',
-            onEachFeature: pop_NutritionPoint_13,
+            dataVar: 'json_NutritionPoint_12',
+            layerName: 'layer_NutritionPoint_12',
+            pane: 'pane_NutritionPoint_12',
+            onEachFeature: pop_NutritionPoint_12,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_NutritionPoint_13_0(feature));
+                return L.marker(latlng, style_NutritionPoint_12_0(feature));
             },
         });
-        bounds_group.addLayer(layer_NutritionPoint_13);
-        function pop_HealthFacilities_14(feature, layer) {
+        bounds_group.addLayer(layer_NutritionPoint_12);
+        function pop_HealthFacilities_13(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Region'] !== null ? autolinker.link(feature.properties['Region'].toLocaleString()) : '') + '</td>\
@@ -793,9 +729,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_HealthFacilities_14_0() {
+        function style_HealthFacilities_13_0() {
             return {
-                pane: 'pane_HealthFacilities_14',
+                pane: 'pane_HealthFacilities_13',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -805,26 +741,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_HealthFacilities_14');
-        map.getPane('pane_HealthFacilities_14').style.zIndex = 414;
-        map.getPane('pane_HealthFacilities_14').style['mix-blend-mode'] = 'normal';
-        var layer_HealthFacilities_14 = new L.geoJson(json_HealthFacilities_14, {
+        map.createPane('pane_HealthFacilities_13');
+        map.getPane('pane_HealthFacilities_13').style.zIndex = 413;
+        map.getPane('pane_HealthFacilities_13').style['mix-blend-mode'] = 'normal';
+        var layer_HealthFacilities_13 = new L.geoJson(json_HealthFacilities_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_HealthFacilities_14',
-            layerName: 'layer_HealthFacilities_14',
-            pane: 'pane_HealthFacilities_14',
-            onEachFeature: pop_HealthFacilities_14,
+            dataVar: 'json_HealthFacilities_13',
+            layerName: 'layer_HealthFacilities_13',
+            pane: 'pane_HealthFacilities_13',
+            onEachFeature: pop_HealthFacilities_13,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_HealthFacilities_14_0(feature));
+                return L.marker(latlng, style_HealthFacilities_13_0(feature));
             },
         });
-        bounds_group.addLayer(layer_HealthFacilities_14);
-        function pop_InformationCenter_15(feature, layer) {
+        bounds_group.addLayer(layer_HealthFacilities_13);
+        function pop_InformationCenter_14(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Agency con'] !== null ? autolinker.link(feature.properties['Agency con'].toLocaleString()) : '') + '</td>\
@@ -905,9 +841,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_InformationCenter_15_0() {
+        function style_InformationCenter_14_0() {
             return {
-                pane: 'pane_InformationCenter_15',
+                pane: 'pane_InformationCenter_14',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -917,26 +853,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_InformationCenter_15');
-        map.getPane('pane_InformationCenter_15').style.zIndex = 415;
-        map.getPane('pane_InformationCenter_15').style['mix-blend-mode'] = 'normal';
-        var layer_InformationCenter_15 = new L.geoJson(json_InformationCenter_15, {
+        map.createPane('pane_InformationCenter_14');
+        map.getPane('pane_InformationCenter_14').style.zIndex = 414;
+        map.getPane('pane_InformationCenter_14').style['mix-blend-mode'] = 'normal';
+        var layer_InformationCenter_14 = new L.geoJson(json_InformationCenter_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_InformationCenter_15',
-            layerName: 'layer_InformationCenter_15',
-            pane: 'pane_InformationCenter_15',
-            onEachFeature: pop_InformationCenter_15,
+            dataVar: 'json_InformationCenter_14',
+            layerName: 'layer_InformationCenter_14',
+            pane: 'pane_InformationCenter_14',
+            onEachFeature: pop_InformationCenter_14,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_InformationCenter_15_0(feature));
+                return L.marker(latlng, style_InformationCenter_14_0(feature));
             },
         });
-        bounds_group.addLayer(layer_InformationCenter_15);
-        map.addLayer(layer_InformationCenter_15);
+        bounds_group.addLayer(layer_InformationCenter_14);
+        map.addLayer(layer_InformationCenter_14);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -948,7 +884,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/InformationCenter_15.png" /> Information Center': layer_InformationCenter_15,'<img src="legend/HealthFacilities_14.png" /> Health Facilities': layer_HealthFacilities_14,'<img src="legend/NutritionPoint_13.png" /> Nutrition Point': layer_NutritionPoint_13,'<img src="legend/IDPSite_12.png" /> IDP Site': layer_IDPSite_12,'<img src="legend/IDPSiteDemarcationDraft_11.png" /> IDP Site Demarcation (Draft)': layer_IDPSiteDemarcationDraft_11,'<img src="legend/CatchmentZoneAreaBanadir_10.png" /> Catchment/Zone Area Banadir': layer_CatchmentZoneAreaBanadir_10,'Accessibility/ Road Network<br /><table><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_9_PrimaryRoad0.png" /></td><td>Primary Road</td></tr><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_9_SecondaryRoad1.png" /></td><td>Secondary Road</td></tr><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_9_TertiaryRoad2.png" /></td><td>Tertiary Road</td></tr><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_9_InternalRoad3.png" /></td><td>Internal Road</td></tr></table>': layer_AccessibilityRoadNetwork_9,'<img src="legend/FLRMRFZoneBoundary_8.png" /> FLR/MRF Zone Boundary': layer_FLRMRFZoneBoundary_8,'<img src="legend/DistrictBoundary_7.png" /> District Boundary': layer_DistrictBoundary_7,'<img src="legend/OPZBoundaries_6.png" /> OPZ Boundaries': layer_OPZBoundaries_6,"Google Terrain": layer_GoogleTerrain_5,"Google Satellite": layer_GoogleSatellite_4,"Google Hybrid": layer_GoogleHybrid_3,"Esri Topographic": layer_EsriTopographic_2,"Esri Imagery": layer_EsriImagery_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/InformationCenter_14.png" /> Information Center': layer_InformationCenter_14,'<img src="legend/HealthFacilities_13.png" /> Health Facilities': layer_HealthFacilities_13,'<img src="legend/NutritionPoint_12.png" /> Nutrition Point': layer_NutritionPoint_12,'<img src="legend/IDPSite_11.png" /> IDP Site': layer_IDPSite_11,'<img src="legend/IDPSiteDemarcationDraft_10.png" /> IDP Site Demarcation (Draft)': layer_IDPSiteDemarcationDraft_10,'<img src="legend/CatchmentZoneAreaBanadir_9.png" /> Catchment/Zone Area Banadir': layer_CatchmentZoneAreaBanadir_9,'Accessibility/ Road Network<br /><table><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_8_PrimaryRoad0.png" /></td><td>Primary Road</td></tr><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_8_SecondaryRoad1.png" /></td><td>Secondary Road</td></tr><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_8_TertiaryRoad2.png" /></td><td>Tertiary Road</td></tr><tr><td style="text-align: center;"><img src="legend/AccessibilityRoadNetwork_8_InternalRoad3.png" /></td><td>Internal Road</td></tr></table>': layer_AccessibilityRoadNetwork_8,'<img src="legend/DistrictBoundary_7.png" /> District Boundary': layer_DistrictBoundary_7,'<img src="legend/OPZBoundaries_6.png" /> OPZ Boundaries': layer_OPZBoundaries_6,"Google Satellite": layer_GoogleSatellite_5,"Google Terrain": layer_GoogleTerrain_4,"Google Hybrid": layer_GoogleHybrid_3,"Esri Topographic": layer_EsriTopographic_2,"Esri Imagery": layer_EsriImagery_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_DistrictBoundary_7.eachLayer(function(layer) {
@@ -964,12 +900,12 @@
               i++;
         });
         var i = 0;
-        layer_FLRMRFZoneBoundary_8.eachLayer(function(layer) {
+        layer_CatchmentZoneAreaBanadir_9.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['index'] !== null?String('<div style="color: #005e09; font-size: 18pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['index']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_FLRMRFZoneBoundary_8'});
+            layer.bindTooltip((layer.feature.properties['Zone_Catch'] !== null?String('<div style="color: #1202cb; font-size: 20pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Zone_Catch']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CatchmentZoneAreaBanadir_9'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -977,25 +913,12 @@
               i++;
         });
         var i = 0;
-        layer_CatchmentZoneAreaBanadir_10.eachLayer(function(layer) {
+        layer_IDPSiteDemarcationDraft_10.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Zone_Catch'] !== null?String('<div style="color: #1202cb; font-size: 20pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Zone_Catch']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CatchmentZoneAreaBanadir_10'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
-        var i = 0;
-        layer_IDPSiteDemarcationDraft_11.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((exp_label_IDPSiteDemarcationDraft_11_eval_expression(context) !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Arial\', sans-serif;">' + exp_label_IDPSiteDemarcationDraft_11_eval_expression(context)) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_IDPSiteDemarcationDraft_11'});
+            layer.bindTooltip((exp_label_IDPSiteDemarcationDraft_10_eval_expression(context) !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Arial\', sans-serif;">' + exp_label_IDPSiteDemarcationDraft_10_eval_expression(context)) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_IDPSiteDemarcationDraft_10'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1003,21 +926,21 @@
               i++;
         });
         map.addControl(new L.Control.Search({
-            layer: layer_CatchmentZoneAreaBanadir_10,
+            layer: layer_IDPSite_11,
             initial: false,
             hideMarkerOnCollapse: true,
-            propertyName: 'Zone_Catch'}));
+            propertyName: 'IDP Site'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
-        resetLabels([layer_DistrictBoundary_7,layer_FLRMRFZoneBoundary_8,layer_CatchmentZoneAreaBanadir_10,layer_IDPSiteDemarcationDraft_11]);
+        resetLabels([layer_DistrictBoundary_7,layer_CatchmentZoneAreaBanadir_9,layer_IDPSiteDemarcationDraft_10]);
         map.on("zoomend", function(){
-            resetLabels([layer_DistrictBoundary_7,layer_FLRMRFZoneBoundary_8,layer_CatchmentZoneAreaBanadir_10,layer_IDPSiteDemarcationDraft_11]);
+            resetLabels([layer_DistrictBoundary_7,layer_CatchmentZoneAreaBanadir_9,layer_IDPSiteDemarcationDraft_10]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_DistrictBoundary_7,layer_FLRMRFZoneBoundary_8,layer_CatchmentZoneAreaBanadir_10,layer_IDPSiteDemarcationDraft_11]);
+            resetLabels([layer_DistrictBoundary_7,layer_CatchmentZoneAreaBanadir_9,layer_IDPSiteDemarcationDraft_10]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_DistrictBoundary_7,layer_FLRMRFZoneBoundary_8,layer_CatchmentZoneAreaBanadir_10,layer_IDPSiteDemarcationDraft_11]);
+            resetLabels([layer_DistrictBoundary_7,layer_CatchmentZoneAreaBanadir_9,layer_IDPSiteDemarcationDraft_10]);
         });
         </script>
     </body>
